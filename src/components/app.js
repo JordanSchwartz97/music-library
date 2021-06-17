@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MusicTable from './MusicTable';
+import Navbar from './Navbar';
 import './app.css'
 
 class App extends Component 
@@ -31,7 +32,9 @@ class App extends Component
     render() {
         return (
             <div>
+                <Navbar/>
                 <MusicTable songs={this.state.songs} />
+                
             </div>
                 );
             }

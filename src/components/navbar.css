@@ -1,0 +1,16 @@
+.navbar{
+    background-color: lightskyblue;
+}
+.navbar-brand{
+    color: black;
+
+}
+.btn{
+    background-color: white !important;
+    position: relative;
+    right: 2000px;
+}
+.form-control{
+    position: relative;
+    right: 2000px;
+}
