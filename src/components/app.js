@@ -1,21 +1,39 @@
 import React, { Component } from 'react';
-class App extends Component {
-    constructor(props){
-    super(props);
-this.state = { 
-    id: null,
-    title: null,
-    album: null,
-    artist: null,
-    genre: null,
-    releaseDate: null
+import axios from 'axios';
+import MusicTable from './MusicTable';
+import './app.css'
 
-}
-}
-render() {
-return (
-<h1>Our React App Using a Component</h1>
-);
-}
+class App extends Component 
+{
+    constructor(props)
+    {
+        super(props);
+        this.state = 
+        { 
+            songs: []
+        }
+    }
+    componentDidMount(){
+        this.getAllSongs();
+        
+    }
+    async getAllSongs(){
+        await axios.get('http://www.devcodecampmusiclibrary.com/api/music').then(res =>{
+          this.setState({
+            songs: res.data
+        });  
+        console.log(this.state.songs)
+        });
+        
+        
+        
+    }
+    render() {
+        return (
+            <div>
+                <MusicTable songs={this.state.songs} />
+            </div>
+                );
+            }
 }
 export default App;
