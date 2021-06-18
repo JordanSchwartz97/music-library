@@ -5,22 +5,22 @@ function MusicTable(props) {
         <div>
             <table>
                 <tr>
-                    <th>Title:</th>
-                    <th>Album:</th>
-                    <th>Artist:</th>
-                    <th>Genre:</th>
-                    <th>Release Date:</th>
+                    <th className="title">Title:</th>
+                    <th className="album">Album:</th>
+                    <th className="artist">Artist:</th>
+                    <th className="genre">Genre:</th>
+                    <th className="date">Release Date:</th>
                 </tr>
             </table>
             {props.songs.map((item) => {
                 return(
             <table>
                 <tr>
-                    <td>{item.title},</td>
-                    <td>{item.album},</td>
-                    <td>{item.artist},</td>
-                    <td>{item.genre},</td>
-                    <td>{item.releaseDate}</td>
+                    <td className="title">{item.title},</td>
+                    <td className="album">{item.album},</td>
+                    <td className="artist">{item.artist},</td>
+                    <td className="genre">{item.genre},</td>
+                    <td className="date">{item.releaseDate}</td>
                     
                 </tr>
                 <br></br>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MusicTable from './MusicTable';
 import Navbar from './Navbar';
+import SearchByFilter from './SearchByFilter';
 import './app.css'
 
 class App extends Component 
@@ -11,9 +12,10 @@ class App extends Component
         super(props);
         this.state = 
         { 
-            songs: []
+            songs: [],
         }
     }
+    
     componentDidMount(){
         this.getAllSongs();
         
@@ -24,7 +26,7 @@ class App extends Component
             songs: res.data
         });  
         console.log(this.state.songs)
-        });
+        })
         
         
         
