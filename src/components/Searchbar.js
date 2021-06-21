@@ -1,12 +1,15 @@
 import React from 'react'
-
- function SearchBar(props) {
-    return (
-        <div>
-            <label htmlFor="search">Search</label>
-            <input type="text" value={props.inputValue} onChange={props.musicFilterOnChange}/>
-        </div>
-    )
-}
-
-export default SearchBar
+import "./Searchbar.css"
+ function SearchBar(props) { 
+     return (
+         <div className="input">
+             <label htmlFor="search">Search:</label>
+             <input type="text" placeholder={props.inputValue} onChange={props.musicFilterOnChange}/>
+         </div>
+         )
+        }
+        
+        export default SearchBar
+        
+        
+        

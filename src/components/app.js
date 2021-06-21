@@ -25,27 +25,9 @@ class App extends Component
         
     } 
     musicFilterOnChange = (event) => {
-        let filteredMusic
         this.setState({
-            inputValue: event.target.value,
-            
+            inputValue: event.target.value, 
         })
-        if(event.target.value === ''){
-            this.setState({
-            songs: this.state.allSongs   
-            })
-            
-        }
-        else{
-        console.log("Hi from onchange", event.target.value)
-        filteredMusic =
-        this.state.songs.filter(songs => {
-            return songs.title.toLowerCase().includes(this.state.inputValue.toLowerCase())
-        })
-        this.setState({
-        songs: filteredMusic  
-        })
-        }
         
     }
     async getAllSongs(){
@@ -57,16 +39,21 @@ class App extends Component
         })
         }
     render() {
-        
+        let filteredMusic = this.state.songs.filter (songs => {
+            return (songs.title.toLowerCase().includes(this.state.inputValue.toLowerCase())|| 
+            songs.album.toLowerCase().includes(this.state.inputValue.toLowerCase()) ||
+            songs.artist.toLowerCase().includes(this.state.inputValue.toLowerCase()) ||
+            songs.genre.toLowerCase().includes(this.state.inputValue.toLowerCase()) ||
+            songs.releaseDate.toLowerCase().includes(this.state.inputValue.toLowerCase())
+            )
+        })
         return (
             <div>
                 <Navbar/>
-                <MusicTable songs={this.state.songs} />
                 <SearchBar 
-                songs={this.state.filteredMusic}
-                musicFilterOnChange={this.musicFilterOnChange}
-                inputValue={this.state.inputValue}
-                handleMusicView={this.handleMusicView}/>
+                musicFilterOnChange={(event)=>this.musicFilterOnChange(event)}
+              />
+                <MusicTable songs={filteredMusic} />             
             </div>
                 );
             }
