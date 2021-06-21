@@ -14,8 +14,8 @@ class App extends Component
         { 
             inputValue: '',
             songs: [],
+            allSongs: [],
             sortValue: '',
-            isMusicViewOn: false,
         }
     }
     
@@ -25,32 +25,48 @@ class App extends Component
         
     } 
     musicFilterOnChange = (event) => {
-        console.log("Hi from onchange", event.target.value)
+        let filteredMusic
         this.setState({
-            inputValue: event.target.value
+            inputValue: event.target.value,
+            
         })
+        if(event.target.value === ''){
+            this.setState({
+            songs: this.state.allSongs   
+            })
+            
+        }
+        else{
+        console.log("Hi from onchange", event.target.value)
+        filteredMusic =
+        this.state.songs.filter(songs => {
+            return songs.title.toLowerCase().includes(this.state.inputValue.toLowerCase())
+        })
+        this.setState({
+        songs: filteredMusic  
+        })
+        }
+        
     }
     async getAllSongs(){
         await axios.get('http://www.devcodecampmusiclibrary.com/api/music').then(res =>{
           this.setState({
-            songs: res.data  
+            songs: res.data, 
+            allSongs: res.data
         });
         })
         }
     render() {
-        const filteredMusic =
-        this.state.songs.filter(songs => {
-            return songs.title.toLowerCase().includes(this.state.inputValue.toLowerCase())
-        })
+        
         return (
             <div>
                 <Navbar/>
                 <MusicTable songs={this.state.songs} />
                 <SearchBar 
-                songs={filteredMusic}
+                songs={this.state.filteredMusic}
                 musicFilterOnChange={this.musicFilterOnChange}
                 inputValue={this.state.inputValue}
-                handleMusicView={this.handleMusicView}/>   
+                handleMusicView={this.handleMusicView}/>
             </div>
                 );
             }
