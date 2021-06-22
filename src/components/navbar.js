@@ -6,7 +6,7 @@ function Navbar() {
         <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="home">Jordan's Music Library</a>
+            <a className="navbar-brand">Jordan's Music Library</a>
           </div>
         </div>
       </nav>
